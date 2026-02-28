@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,400..800&family=Outfit:wght@400..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-sans: 'DM Sans', sans-serif;
+    --font-display: 'Outfit', sans-serif;
+
+    /* Senior Frontend Palette: Modern & Minimalist */
+    --background: 202 46% 96%; /* #e5eff8 - Light bg / accents */
+    --foreground: 201 46% 15%; /* #142a36 - Main background / text */
+
+    --card: 0 0% 100%;
+    --card-foreground: 201 46% 15%;
+    --card-border: 200 18% 67%; /* #9ab1bc */
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 201 46% 15%;
+    --popover-border: 200 18% 67%;
+
+    --primary: 156 46% 40%; /* #379670 */
+    --primary-foreground: 202 46% 96%;
+
+    --secondary: 161 37% 48%; /* #4da88e */
+    --secondary-foreground: 202 46% 96%;
+
+    --muted: 202 18% 90%;
+    --muted-foreground: 201 20% 35%;
+
+    --accent: 147 31% 62%; /* #7fbd9b */
+    --accent-foreground: 201 46% 15%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 200 18% 67%; /* #9ab1bc */
+    --input: 200 18% 67%;
+    --ring: 156 46% 40%;
+
+    --radius: 1rem;
+  }
+
+  .dark {
+    --background: 201 46% 15%; /* #142a36 */
+    --foreground: 202 46% 96%;
+
+    --card: 201 46% 18%;
+    --card-foreground: 202 46% 96%;
+    --card-border: 201 46% 25%;
+
+    --popover: 201 46% 18%;
+    --popover-foreground: 202 46% 96%;
+    --popover-border: 201 46% 25%;
+
+    --primary: 156 46% 40%;
+    --primary-foreground: 202 46% 96%;
+
+    --secondary: 161 37% 48%;
+    --secondary-foreground: 202 46% 96%;
+
+    --muted: 201 46% 25%;
+    --muted-foreground: 201 20% 65%;
+
+    --accent: 147 31% 62%;
+    --accent-foreground: 201 46% 15%;
+
+    --border: 201 46% 25%;
+    --input: 201 46% 25%;
+    --ring: 156 46% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary selection:text-primary-foreground;
+    font-family: var(--font-sans);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply tracking-tight;
+  }
+}
+
+/* Playful utilities */
+@layer utilities {
+  .glass-card {
+    @apply bg-white/70 dark:bg-black/40 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)];
+  }
+  
+  .glass-panel {
+    @apply bg-white/40 dark:bg-black/20 backdrop-blur-md border border-white/40 dark:border-white/10;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+  }
+
+  .animated-gradient-bg {
+    background: linear-gradient(-45deg, hsl(var(--primary)/0.1), hsl(var(--accent)/0.1), hsl(var(--secondary)/0.5));
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+  }
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
